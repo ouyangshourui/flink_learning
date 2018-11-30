@@ -4,13 +4,13 @@ import Bean.RealTimeTrackerBean
 import org.apache.flink.streaming.api.functions.AssignerWithPeriodicWatermarks
 import org.apache.flink.streaming.api.watermark.Watermark
 
-class BoundedGenerator extends AssignerWithPeriodicWatermarks[(String,String,String,String,String,String,String,String,String,Long,String)] {
+class BoundedGenerator extends AssignerWithPeriodicWatermarks[(Long,String,String,String,String,String,String,String,String,Long,String)] {
 
   val maxOutOfOrderness = 3500L // 3.5 seconds
 
   var currentMaxTimestamp: Long = _
 
-  override def extractTimestamp(element:(String,String,String,String,String,String,String,String,String,Long,String), previousElementTimestamp: Long): Long = {
+  override def extractTimestamp(element:(Long,String,String,String,String,String,String,String,String,Long,String), previousElementTimestamp: Long): Long = {
     val timestamp = element._10
     timestamp;
   }

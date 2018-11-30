@@ -14,7 +14,7 @@ object TrackRealTimeAcquisitionDemo {
   val properties = new Properties()
 
   def init():Unit={
-    properties.setProperty("bootstrap.servers", "172.17.210.169:9092,172.17.210.170:9092,172.17.210.171:9092,172.17.210.172:9092,172.17.210.173:9092")
+    properties.setProperty("bootstrap.servers", "62.62.210.169:9092,62.62.210.170:9092,62.62.210.171:9092,62.62.210.62:9092,62.62.210.173:9092")
     properties.setProperty("group.id", "flink-scala-test")
     properties.setProperty("auto.offset.reset","latest")
   }
