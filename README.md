@@ -1,5 +1,8 @@
+# 1、compile command
 
-# 使用如下的warkmark函数不生效
+- mvn assembly:assembly
+
+# 2、（todo）使用如下的warkmark函数不生效
 ```scala
 package product
 
@@ -22,7 +25,7 @@ class BoundedGenerator extends AssignerWithPeriodicWatermarks[(Long, String, Str
     new Watermark(currentMaxTimestamp - maxOutOfOrderness)
   }
 }
-
+```
 需要这样定义：
 
 
@@ -31,3 +34,5 @@ class BoundedGenerator extends AssignerWithPeriodicWatermarks[(Long, String, Str
     override def extractAscendingTimestamp(element: Tuple11[Long,String,String,String,String,String,String,String,String,Long,String]): Long = element._10
   }
 ```
+
+
