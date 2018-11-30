@@ -1,6 +1,7 @@
 # 1、compile command
 
 - mvn assembly:assembly
+- product.TrackRealTimeAcquisitionHackAttack 定义了wzh的流量数据，基于eventtime进行分析。
 
 # 2、（todo）使用如下的warkmark函数不生效
 ```scala
