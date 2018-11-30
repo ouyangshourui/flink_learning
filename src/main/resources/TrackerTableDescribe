@@ -1,0 +1,48 @@
+CREATE EXTERNAL TABLE `bdm_tracker_flow_de`(
+  `servertime` string COMMENT '服务端接收时间',
+  `fronttime` string COMMENT '客户端日志产生时间',
+  `ip` string COMMENT '客户端ip',
+  `guid` string COMMENT '设备唯一标识',
+  `userid` string COMMENT '已登录用户id',
+  `platform` string COMMENT '平台',//1-微商城，2-安卓，3-ios，4pc，5wap
+  `biztype` string COMMENT '业务类型',
+  `logtype` string COMMENT '日志类型',
+  `referurl` string COMMENT 'H5来源页面url',
+  `curpageurl` string COMMENT 'H5当前页面url',
+  `pagelevelid` string COMMENT '页面层级id',
+  `viewid` string COMMENT '加载事件id',
+  `viewparam` string COMMENT '加载事件参数',
+  `clickid` string COMMENT '点击（跳转）事件id',
+  `clickparam` string COMMENT '点击（跳转）事件参数',
+  `os` string COMMENT '客户端操作系统',
+  `display` string COMMENT '客户端分辨率',
+  `downchann` string COMMENT '下载渠道',
+  `appversion` string COMMENT 'app版本（H5上报浏览器版本）',
+  `devicetype` string COMMENT '设备型号',
+  `nettype` string COMMENT '网络类型',
+  `coordinate` string COMMENT '经纬度',
+  `hserecomkey` string COMMENT '分享key',
+  `hseextend` string COMMENT '备用1号',
+  `hseepread` string COMMENT '备用2号',
+  `searchengine` string COMMENT '搜索引擎',
+  `keyword` string COMMENT '搜索关键字',
+  `chansource` string COMMENT '分享来源',
+  `search` string COMMENT 'htag',
+  `platformid` string COMMENT '平台id',
+  `appid` string COMMENT '应用id')
+PARTITIONED BY (
+  `days` string,
+  `hours` string,
+  `ten_min` string)
+ROW FORMAT DELIMITED
+  FIELDS TERMINATED BY '\t'
+STORED AS INPUTFORMAT
+  'org.apache.hadoop.mapred.TextInputFormat'
+OUTPUTFORMAT
+  'org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat'
+LOCATION
+  'hdfs://HZWONE/apps/hive/warehouse/bdm/bdm_tracker_flow_de'
+TBLPROPERTIES (
+  'last_modified_by'='hive',
+  'last_modified_time'='1477296334',
+  'transient_lastDdlTime'='1477296334')
